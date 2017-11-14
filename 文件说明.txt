@@ -1,0 +1,18 @@
+common.sh 包含其他脚本所需的公共函数
+
+create-tree.sh 生成源目录树
+dists-ln.sh 生成源目录树中的目录链接
+cp-deb.sh 把系统现已缓存的deb包文件复制到源目录树中
+genkeyFile.sh 被genkey-auto.sh调用，完成gpg --export过程
+genkey-auto.sh 自动完成gpg --gen-key和gpg --export过程
+packages.sh 生成Packages和Packages.gz文件
+release.sh 生成Release，InRelease和Release.gpg文件
+release-auto.sh 自动完成packages.sh和release.sh过程
+apt.sh 修改/etc/apt/sources.list，在其中添加本地源，并执行apt-key add
+apt-key-del.sh 执行apt-key del keyid
+gpg-del-key.exp 使用gpg删除私钥和公钥
+
+src-gen.sh 生成离线源并打包
+src-use.sh 解开src-gen.sh打包的离线源，并配置
+src-local.sh 将离线源本地化
+

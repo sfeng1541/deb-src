@@ -1,0 +1,33 @@
+命令参考：
+
+生成gpg密钥，用于对Rlease文件和deb包签名
+# gpg --gen-key
+4
+2048
+10y
+y
+myname
+myname@xxx.com
+comm
+o
+myname
+
+查询密钥对
+# gpg --list-keys
+
+导出公钥(keyFile)，用于使用者添加密钥
+# gpg --export A9A6BBB3 > keyFile
+
+删除密钥对
+# gpg --delete-secret-keys myname
+y
+y
+# gpg --delete-keys myname
+y
+
+使用本地源前先添加密钥
+# apt-key add /var/debian-dev/keyFile
+对应的删除
+# apt-key list
+# apt-key del A9A6BBB3
+

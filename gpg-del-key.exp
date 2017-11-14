@@ -1,0 +1,32 @@
+#!/usr/bin/expect
+
+set timeout -1
+
+set GPGNAME myname
+
+if { $argc != 0 && $argc != 1 } {  
+    send_user "Usage: $argv0 \[gpgname]\n"  
+    exit 1 
+} 
+
+if { $argc == 1 } {  
+	set GPGNAME [lindex $argv 0]  
+}
+
+spawn gpg --delete-secret-keys $GPGNAME
+expect {
+	"要从钥匙环里删除这把密钥吗？" { send "y\n"; exp_continue }
+	"Delete this key from the keyring?" { send "y\n"; exp_continue }
+	"这是一把私钥！――真的要删除吗？" { send "y\n"; exp_continue }
+	"This is a secret key! - really delete?" { send "y\n"; exp_continue }
+	eof { send_user "auto eof\n" }
+}
+
+spawn gpg --delete-keys $GPGNAME
+expect {
+	"要从钥匙环里删除这把密钥吗？" { send "y\n"; exp_continue }
+	"Delete this key from the keyring?" { send "y\n"; exp_continue }
+	eof { send_user "auto eof\n" }
+}
+
+exit 0

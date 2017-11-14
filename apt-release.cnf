@@ -1,0 +1,6 @@
+APT::FTPArchive::Release::Codename "xenial-dev";
+APT::FTPArchive::Release::Origin "SFeng";
+APT::FTPArchive::Release::Components "main contrib non-free";
+APT::FTPArchive::Release::Label "Debian SFeng";
+APT::FTPArchive::Release::Architectures "amd64";
+APT::FTPArchive::Release::Suite "stable";
